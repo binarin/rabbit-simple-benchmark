@@ -9,7 +9,7 @@ dpkg -i /tmp/rabbit.deb || apt-get -y -f install
 cp /vagrant/rabbit-generated.conf /etc/rabbitmq/rabbitmq.config
 
 service rabbitmq-server stop
-echo DPMDALGUKEOMPTHWPYKC >> /var/lib/rabbitmq/.erlang.cookie
+echo DPMDALGUKEOMPTHWPYKC > /var/lib/rabbitmq/.erlang.cookie
 chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie
 chmod 0600 /var/lib/rabbitmq/.erlang.cookie
 rabbitmq-plugins enable rabbitmq_management
