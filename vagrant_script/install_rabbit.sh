@@ -17,4 +17,3 @@ service rabbitmq-server start
 rabbitmqctl delete_user test || true
 rabbitmqctl add_user test test
 rabbitmqctl set_permissions test ".*" ".*" ".*"
-service rabbitmq-server stop
