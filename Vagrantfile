@@ -6,13 +6,16 @@ IMAGE_NAME="trusty64"
 IP24NET="10.10.10"
 OCF_URL=ENV["OCF_URL"] || "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/stable/packaging/common/rabbitmq-server-ha.ocf"
 ERLANG_URL=ENV["ERLANG_URL"] || "http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_18.1-1~ubuntu~trusty_amd64.deb"
-RABBITMQ_URL=ENV["RABBITMQ_URL"] || "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_5_6/rabbitmq-server_3.5.6-1_all.deb"
+RABBIT_URL=ENV["RABBITMQ_URL"] || "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_5_6/rabbitmq-server_3.5.6-1_all.deb"
+APT_PROXY_URL=ENV["APT_PROXY_URL"]
 
 def shell_script(filename, args=[])
   "/bin/bash #{filename} #{args.join ' '} 2>/dev/null"
 end
 
-install_software = shell_script("/vagrant/vagrant_script/install_software.sh", [ERLANG_URL,RABBITMQ_URL])
+install_software = shell_script("/vagrant/vagrant_script/install_software.sh", [APT_PROXY_URL])
+install_erlang = shell_script("/vagrant/vagrant_script/install_erlang.sh", [ERLANG_URL, APT_PROXY_URL])
+install_rabbit = shell_script("/vagrant/vagrant_script/install_rabbit.sh", [RABBIT_URL, APT_PROXY_URL])
 
 # Render a rabbitmq pacemaker primitive configuration
 rabbit_primitive_setup = shell_script("/vagrant/vagrant_script/conf_rabbit_primitive.sh")
@@ -44,6 +47,8 @@ Vagrant.configure(2) do |config|
     config.vm.network :private_network, ip: "#{IP24NET}.2", :mode => 'nat'
     config.vm.provision "shell", run: "always", inline: hosts_setup, privileged: true
     config.vm.provision "shell", run: "always", inline: install_software, privileged: true
+    config.vm.provision "shell", run: "always", inline: install_erlang, privileged: true
+    config.vm.provision "shell", run: "always", inline: install_rabbit, privileged: true
     corosync_setup = shell_script("/vagrant/vagrant_script/conf_corosync.sh", ["#{IP24NET}.2"])
     config.vm.provision "shell", run: "always", inline: corosync_setup, privileged: true
     config.vm.provision "shell", run: "always", inline: rabbit_ocf_setup, privileged: true
@@ -62,7 +67,10 @@ Vagrant.configure(2) do |config|
       config.vm.host_name = "n#{index}"
       config.vm.network :private_network, ip: "#{IP24NET}.#{ip_ind}", :mode => 'nat'
       config.vm.provision "shell", run: "always", inline: hosts_setup, privileged: true
-      config.vm.provision "shell", run: "always", inline: install_software, privileged: true
+      config.vm.provision "shell", inline: install_software, privileged: true
+      config.vm.provision "shell", inline: install_erlang, privileged: true
+      config.vm.provision "shell", inline: install_rabbit, privileged: true
+
       # wait 10 seconds for the first corosync node
       corosync_setup = shell_script("/vagrant/vagrant_script/conf_corosync.sh", ["#{IP24NET}.#{ip_ind}", 10])
       config.vm.provision "shell", run: "always", inline: corosync_setup, privileged: true

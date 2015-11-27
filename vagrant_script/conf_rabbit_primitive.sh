@@ -30,8 +30,6 @@ ms p_rabbitmq-server-master p_rabbitmq-server \
         meta notify=true ordered=false interleave=true master-max=1 master-node-max=1
 property stonith-enabled=false
 property no-quorum-policy=ignore
-delete ubuntu1404
-delete vagrant
 commit force
 EOF
 exit 0

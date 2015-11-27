@@ -1,1 +1,5 @@
 /.vagrant
+/rabbit-generated.conf
+/rabbit_post_inst.sh
+/log.txt
+/result.log
