@@ -9,11 +9,3 @@ fi
 
 apt-get update
 locale-gen ru_RU.UTF-8
-
-apt-get install -y crmsh pacemaker corosync cluster-glue resource-agents libqb0
-
-# Enable corosync and pacemaker
-sed -i 's/START=no/START=yes/g' /etc/default/corosync
-update-rc.d pacemaker start 20 2 3 4 5 . stop 00 0 1 6 .
-service corosync start
-service pacemaker start
