@@ -7,6 +7,7 @@ use Carp;
 use English '-no_match_vars';
 use Data::Printer;
 use List::Util qw/sum/;
+use 5.14.0;
 
 use version; our $VERSION = qv('1.0.0');
 
@@ -42,5 +43,5 @@ for my $size (sort { $a <=> $b } keys %sizes) {
     print $out_fh join("|", ('--------') x @headers), "\n";
 
     my @data = sort { $a->{avg} <=> $b->{avg} } @$data;
-    print $out_fh join("|", %{$_}{@headers}), "\n" for @data;
+    say $out_fh join("|", @{$_}{@headers}) for @data;
 }
