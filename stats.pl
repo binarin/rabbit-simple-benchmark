@@ -28,20 +28,37 @@ while (my($params, $speeds) = each %measurements) {
     shift @speeds;
 
     my %params = map { split /=/ } split /,/, $params;
-    $params{avg} = sum(@speeds) / scalar(@speeds);
+    $params{avg} = int(sum(@speeds) / scalar(@speeds));
     push @{$sizes{delete $params{MESSAGE_SIZE}}}, \%params;
 }
 
 open my $out_fh, q{>}, "report.md" or die "report.md: $OS_ERROR";
 print $out_fh "Benchmark results\n============================\n";
+print $out_fh <<EOF;
+'stock' erlang is the version from ubuntu trusty.
+
+Tunings:
+- 'fhc' is about disabling fhc read cache
+- 'hipe' is about enabling HiPE compilation
+- 'stats' is about tuning stats collection in management plugin
+EOF
+
+
 for my $size (sort { $a <=> $b } keys %sizes) {
     my $data = $sizes{$size};
     print $out_fh "Message size $size\n----------------------\n";
 
-    my @headers = ((sort grep { $_ ne 'avg' } keys %{$data->[0]}), 'avg');
+    my @headers = ("erlang", "rabbit", "tuning", "throughput");
     print $out_fh join("|", @headers), "\n";
     print $out_fh join("|", ('--------') x @headers), "\n";
 
     my @data = sort { $a->{avg} <=> $b->{avg} } @$data;
-    say $out_fh join("|", @{$_}{@headers}) for @data;
+    for my $row (@data) {
+        my @tuning;
+        push @tuning, 'fhc' if $row->{FHC_READ_BUFFERING} eq 'false';
+        push @tuning, 'hipe' if $row->{HIPE_COMPILE} eq 'true';
+        push @tuning, 'stats' if $row->{STATS} ne 'default';
+        my $tuning = join (", ", @tuning);
+        say $out_fh "$row->{ERLANG}|$row->{RABBIT}|$tuning|$row->{avg}";
+    }
 }

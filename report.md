@@ -1,206 +1,212 @@
 Benchmark results
 ============================
+'stock' erlang is the version from ubuntu trusty.
+
+Tunings:
+- 'fhc' is about disabling fhc read cache
+- 'hipe' is about enabling HiPE compilation
+- 'stats' is about tuning stats collection in management plugin
 Message size 5000
 ----------------------
-ERLANG|FHC_READ_BUFFERING|HIPE_COMPILE|RABBIT|RABBIT_HA|STATS|avg
---------|--------|--------|--------|--------|--------|--------
-stock|false|false|3.5.6|true|default|3500.33333333333
-18.1|true|false|3.5.4|true|default|3545.27777777778
-18.1|false|false|3.5.6|true|default|3653.26086956522
-stock|true|true|3.5.6|true|default|3685.875
-stock|true|false|3.5.6|true|default|3702
-stock|false|false|3.6.0-rc1|true|tuned_stats|3713.66666666667
-18.1|true|false|3.6.0-rc1|true|default|3715
-stock|true|false|3.5.4|true|default|3728
-18.1|true|false|3.5.6|true|default|3732.39130434783
-stock|false|true|3.5.6|true|default|3740.84615384615
-18.1|false|false|3.6.0-rc1|true|default|3774.61111111111
-18.1|true|false|3.5.4|true|tuned_stats|3789.11111111111
-stock|false|false|3.5.6|true|tuned_stats|3802.25
-stock|true|false|3.6.0-rc1|true|default|3843
-stock|true|false|3.5.6|true|tuned_stats|3848.33333333333
-18.1|false|false|3.6.0-rc1|true|tuned_stats|3857.05555555556
-18.1|true|false|3.6.0-rc1|true|tuned_stats|3868.44444444444
-stock|true|true|3.5.6|true|tuned_stats|3928.30769230769
-18.1|true|false|3.5.6|true|tuned_stats|3935.4347826087
-18.1|false|false|3.5.6|true|tuned_stats|3981.69565217391
-stock|false|true|3.5.6|true|tuned_stats|4038.07692307692
-stock|false|false|3.6.0-rc1|true|default|4056.66666666667
-stock|true|true|3.5.4|true|default|4097
-stock|true|false|3.5.4|true|tuned_stats|4140.33333333333
-stock|true|false|3.6.0-rc1|true|tuned_stats|4301.33333333333
-18.1|true|true|3.5.4|true|tuned_stats|4314.73913043478
-stock|true|true|3.5.4|true|tuned_stats|4317
-18.1|true|true|3.5.4|true|default|4451.16666666667
-18.1|true|true|3.5.6|true|default|4464.4347826087
-18.1|false|true|3.5.6|true|default|4467.30434782609
-18.1|false|true|3.5.6|true|tuned_stats|4524.14285714286
-18.1|true|true|3.5.6|true|tuned_stats|4719.91304347826
-18.1|true|false|3.5.4|false|default|7813.33333333333
-stock|true|false|3.6.0-rc1|false|default|7950.66666666667
-stock|true|false|3.5.6|false|default|8008
-stock|true|true|3.5.4|false|default|8035
-18.1|false|false|3.6.0-rc1|false|default|8043.61111111111
-stock|true|false|3.5.4|false|default|8046.33333333333
-stock|false|false|3.5.6|false|tuned_stats|8110.125
-18.1|false|false|3.5.6|false|default|8117.82608695652
-18.1|true|false|3.6.0-rc1|false|default|8196.61111111111
-18.1|false|false|3.5.6|false|tuned_stats|8268
-18.1|true|false|3.5.4|false|tuned_stats|8274.11111111111
-stock|false|true|3.5.6|false|default|8281.92307692308
-18.1|false|false|3.6.0-rc1|false|tuned_stats|8335.61111111111
-stock|false|true|3.5.6|false|tuned_stats|8365.07692307692
-stock|true|false|3.5.4|false|tuned_stats|8369
-stock|true|false|3.5.6|false|tuned_stats|8373
-stock|false|false|3.6.0-rc1|false|default|8415.33333333333
-18.1|true|false|3.5.6|false|default|8466
-stock|false|false|3.5.6|false|default|8488.33333333333
-stock|true|true|3.5.4|false|tuned_stats|8504.66666666667
-stock|true|true|3.5.6|false|tuned_stats|8664.15384615385
-18.1|true|false|3.6.0-rc1|false|tuned_stats|8664.44444444445
-18.1|true|false|3.5.6|false|tuned_stats|8694.69565217391
-stock|true|true|3.5.6|false|default|8704.75
-stock|false|false|3.6.0-rc1|false|tuned_stats|8762.33333333333
-stock|true|false|3.6.0-rc1|false|tuned_stats|8874
-18.1|false|true|3.5.6|false|default|10081.1304347826
-18.1|true|true|3.5.4|false|default|10293.5555555556
-18.1|true|true|3.5.4|false|tuned_stats|10370.3913043478
-18.1|true|true|3.5.6|false|tuned_stats|10724.9565217391
-18.1|true|true|3.5.6|false|default|10942.5652173913
-18.1|false|true|3.5.6|false|tuned_stats|11167.5714285714
+erlang|rabbit|tuning|throughput
+--------|--------|--------|--------
+stock|3.5.6|fhc|3500
+18.1|3.5.4||3545
+18.1|3.5.6|fhc|3653
+stock|3.5.6|hipe|3685
+stock|3.5.6||3702
+stock|3.6.0-rc1|fhc, stats|3713
+18.1|3.6.0-rc1||3715
+stock|3.5.4||3728
+18.1|3.5.6||3732
+stock|3.5.6|fhc, hipe|3740
+18.1|3.6.0-rc1|fhc|3774
+18.1|3.5.4|stats|3789
+stock|3.5.6|fhc, stats|3802
+stock|3.6.0-rc1||3843
+stock|3.5.6|stats|3848
+18.1|3.6.0-rc1|fhc, stats|3857
+18.1|3.6.0-rc1|stats|3868
+stock|3.5.6|hipe, stats|3928
+18.1|3.5.6|stats|3935
+18.1|3.5.6|fhc, stats|3981
+stock|3.5.6|fhc, hipe, stats|4038
+stock|3.6.0-rc1|fhc|4056
+stock|3.5.4|hipe|4097
+stock|3.5.4|stats|4140
+stock|3.6.0-rc1|stats|4301
+18.1|3.5.4|hipe, stats|4314
+stock|3.5.4|hipe, stats|4317
+18.1|3.5.4|hipe|4451
+18.1|3.5.6|hipe|4464
+18.1|3.5.6|fhc, hipe|4467
+18.1|3.5.6|fhc, hipe, stats|4524
+18.1|3.5.6|hipe, stats|4719
+18.1|3.5.4||7813
+stock|3.6.0-rc1||7950
+stock|3.5.6||8008
+stock|3.5.4|hipe|8035
+18.1|3.6.0-rc1|fhc|8043
+stock|3.5.4||8046
+stock|3.5.6|fhc, stats|8110
+18.1|3.5.6|fhc|8117
+18.1|3.6.0-rc1||8196
+18.1|3.5.6|fhc, stats|8268
+18.1|3.5.4|stats|8274
+stock|3.5.6|fhc, hipe|8281
+18.1|3.6.0-rc1|fhc, stats|8335
+stock|3.5.6|fhc, hipe, stats|8365
+stock|3.5.4|stats|8369
+stock|3.5.6|stats|8373
+stock|3.6.0-rc1|fhc|8415
+18.1|3.5.6||8466
+stock|3.5.6|fhc|8488
+stock|3.5.4|hipe, stats|8504
+18.1|3.6.0-rc1|stats|8664
+stock|3.5.6|hipe, stats|8664
+18.1|3.5.6|stats|8694
+stock|3.5.6|hipe|8704
+stock|3.6.0-rc1|fhc, stats|8762
+stock|3.6.0-rc1|stats|8874
+18.1|3.5.6|fhc, hipe|10081
+18.1|3.5.4|hipe|10293
+18.1|3.5.4|hipe, stats|10370
+18.1|3.5.6|hipe, stats|10724
+18.1|3.5.6|hipe|10942
+18.1|3.5.6|fhc, hipe, stats|11167
 Message size 25000
 ----------------------
-ERLANG|FHC_READ_BUFFERING|HIPE_COMPILE|RABBIT|RABBIT_HA|STATS|avg
---------|--------|--------|--------|--------|--------|--------
-stock|true|false|3.5.4|true|default|2591.66666666667
-stock|false|false|3.5.6|true|tuned_stats|2634.375
-stock|true|true|3.5.4|true|default|2694
-stock|true|true|3.5.6|true|tuned_stats|2735.07692307692
-18.1|true|false|3.5.4|true|default|2759.27777777778
-18.1|true|false|3.5.4|true|tuned_stats|2771.66666666667
-stock|false|false|3.6.0-rc1|true|default|2826.33333333333
-18.1|false|false|3.5.6|true|tuned_stats|2831.34782608696
-18.1|false|false|3.6.0-rc1|true|default|2831.72222222222
-18.1|true|false|3.6.0-rc1|true|default|2836.23076923077
-18.1|true|false|3.6.0-rc1|true|tuned_stats|2839.77777777778
-stock|true|false|3.5.4|true|tuned_stats|2864
-stock|true|true|3.5.4|true|tuned_stats|2866.66666666667
-18.1|true|false|3.5.6|true|default|2871.13043478261
-18.1|false|false|3.5.6|true|default|2878.39130434783
-18.1|false|false|3.6.0-rc1|true|tuned_stats|2879.55555555556
-stock|true|true|3.5.6|true|default|2885.375
-stock|false|false|3.5.6|true|default|2955
-stock|false|true|3.5.6|true|default|2956.84615384615
-stock|false|true|3.5.6|true|tuned_stats|2957.23076923077
-stock|true|false|3.6.0-rc1|true|default|2976.33333333333
-18.1|true|false|3.5.6|true|tuned_stats|2976.78260869565
-stock|true|false|3.5.6|true|default|2990.66666666667
-stock|false|false|3.6.0-rc1|true|tuned_stats|3006.66666666667
-stock|true|false|3.5.6|true|tuned_stats|3029.66666666667
-18.1|false|true|3.5.6|true|default|3033.26086956522
-stock|true|false|3.6.0-rc1|true|tuned_stats|3051.33333333333
-18.1|true|true|3.5.4|true|tuned_stats|3061.91304347826
-18.1|true|true|3.5.6|true|default|3156.95652173913
-18.1|true|true|3.5.4|true|default|3166.27777777778
-18.1|false|true|3.5.6|true|tuned_stats|3203.85714285714
-18.1|true|true|3.5.6|true|tuned_stats|3248.86956521739
-18.1|false|false|3.6.0-rc1|false|default|6197.88888888889
-stock|true|false|3.5.4|false|default|6265.66666666667
-stock|true|false|3.6.0-rc1|false|default|6335.66666666667
-stock|true|true|3.5.4|false|default|6423.66666666667
-stock|false|false|3.5.6|false|tuned_stats|6425.875
-18.1|false|false|3.5.6|false|tuned_stats|6488.17391304348
-18.1|true|false|3.5.4|false|tuned_stats|6490.72222222222
-18.1|true|false|3.5.4|false|default|6495.05555555556
-18.1|false|false|3.6.0-rc1|false|tuned_stats|6543.61111111111
-18.1|true|false|3.6.0-rc1|false|default|6547.5
-stock|false|false|3.6.0-rc1|false|default|6563.33333333333
-stock|true|false|3.5.4|false|tuned_stats|6593.33333333333
-stock|false|false|3.5.6|false|default|6593.66666666667
-18.1|true|false|3.5.6|false|default|6660.86956521739
-stock|false|true|3.5.6|false|default|6693.76923076923
-18.1|true|false|3.6.0-rc1|false|tuned_stats|6708.61111111111
-18.1|false|false|3.5.6|false|default|6821.82608695652
-stock|true|false|3.5.6|false|tuned_stats|6836
-stock|true|false|3.5.6|false|default|6872.33333333333
-stock|true|true|3.5.6|false|default|6920.625
-stock|false|false|3.6.0-rc1|false|tuned_stats|6920.66666666667
-stock|false|true|3.5.6|false|tuned_stats|7012.07692307692
-18.1|true|false|3.5.6|false|tuned_stats|7036.78260869565
-stock|true|true|3.5.6|false|tuned_stats|7055.46153846154
-stock|true|false|3.6.0-rc1|false|tuned_stats|7133
-18.1|false|true|3.5.6|false|default|7349.52173913043
-stock|true|true|3.5.4|false|tuned_stats|7398.66666666667
-18.1|true|true|3.5.4|false|tuned_stats|7675.21739130435
-18.1|true|true|3.5.4|false|default|7690.5
-18.1|true|true|3.5.6|false|tuned_stats|8085.69565217391
-18.1|false|true|3.5.6|false|tuned_stats|8245.82142857143
-18.1|true|true|3.5.6|false|default|8279.91304347826
+erlang|rabbit|tuning|throughput
+--------|--------|--------|--------
+stock|3.5.4||2591
+stock|3.5.6|fhc, stats|2634
+stock|3.5.4|hipe|2694
+stock|3.5.6|hipe, stats|2735
+18.1|3.5.4||2759
+18.1|3.5.4|stats|2771
+stock|3.6.0-rc1|fhc|2826
+18.1|3.6.0-rc1|fhc|2831
+18.1|3.5.6|fhc, stats|2831
+18.1|3.6.0-rc1||2836
+18.1|3.6.0-rc1|stats|2839
+stock|3.5.4|stats|2864
+stock|3.5.4|hipe, stats|2866
+18.1|3.5.6||2871
+18.1|3.5.6|fhc|2878
+18.1|3.6.0-rc1|fhc, stats|2879
+stock|3.5.6|hipe|2885
+stock|3.5.6|fhc|2955
+stock|3.5.6|fhc, hipe|2956
+stock|3.5.6|fhc, hipe, stats|2957
+18.1|3.5.6|stats|2976
+stock|3.6.0-rc1||2976
+stock|3.5.6||2990
+stock|3.6.0-rc1|fhc, stats|3006
+stock|3.5.6|stats|3029
+18.1|3.5.6|fhc, hipe|3033
+stock|3.6.0-rc1|stats|3051
+18.1|3.5.4|hipe, stats|3061
+18.1|3.5.6|hipe|3156
+18.1|3.5.4|hipe|3166
+18.1|3.5.6|fhc, hipe, stats|3203
+18.1|3.5.6|hipe, stats|3248
+18.1|3.6.0-rc1|fhc|6197
+stock|3.5.4||6265
+stock|3.6.0-rc1||6335
+stock|3.5.4|hipe|6423
+stock|3.5.6|fhc, stats|6425
+18.1|3.5.6|fhc, stats|6488
+18.1|3.5.4|stats|6490
+18.1|3.5.4||6495
+18.1|3.6.0-rc1|fhc, stats|6543
+18.1|3.6.0-rc1||6547
+stock|3.6.0-rc1|fhc|6563
+stock|3.5.4|stats|6593
+stock|3.5.6|fhc|6593
+18.1|3.5.6||6660
+stock|3.5.6|fhc, hipe|6693
+18.1|3.6.0-rc1|stats|6708
+18.1|3.5.6|fhc|6821
+stock|3.5.6|stats|6836
+stock|3.5.6||6872
+stock|3.5.6|hipe|6920
+stock|3.6.0-rc1|fhc, stats|6920
+stock|3.5.6|fhc, hipe, stats|7012
+18.1|3.5.6|stats|7036
+stock|3.5.6|hipe, stats|7055
+stock|3.6.0-rc1|stats|7133
+18.1|3.5.6|fhc, hipe|7349
+stock|3.5.4|hipe, stats|7398
+18.1|3.5.4|hipe, stats|7675
+18.1|3.5.4|hipe|7690
+18.1|3.5.6|hipe, stats|8085
+18.1|3.5.6|fhc, hipe, stats|8245
+18.1|3.5.6|hipe|8279
 Message size 50000
 ----------------------
-ERLANG|FHC_READ_BUFFERING|HIPE_COMPILE|RABBIT|RABBIT_HA|STATS|avg
---------|--------|--------|--------|--------|--------|--------
-stock|true|false|3.5.4|true|default|1735.33333333333
-stock|false|false|3.5.6|true|tuned_stats|1887.125
-stock|true|true|3.5.4|true|tuned_stats|1931
-stock|true|true|3.5.4|true|default|1953.66666666667
-18.1|true|false|3.5.4|true|default|1976.77777777778
-stock|false|false|3.6.0-rc1|true|default|1980.33333333333
-18.1|false|false|3.6.0-rc1|true|default|2050.66666666667
-18.1|true|false|3.5.6|true|default|2052.17391304348
-18.1|true|false|3.6.0-rc1|true|tuned_stats|2056.77777777778
-18.1|false|false|3.5.6|true|tuned_stats|2081.60869565217
-18.1|false|false|3.6.0-rc1|true|tuned_stats|2088.88888888889
-stock|true|false|3.5.6|true|default|2090.33333333333
-18.1|false|false|3.5.6|true|default|2094.21739130435
-stock|true|true|3.5.6|true|default|2094.5
-18.1|true|false|3.6.0-rc1|true|default|2102.15384615385
-18.1|true|false|3.5.4|true|tuned_stats|2107.16666666667
-stock|false|true|3.5.6|true|tuned_stats|2117.46153846154
-stock|true|false|3.5.4|true|tuned_stats|2122
-18.1|true|true|3.5.4|true|tuned_stats|2125
-stock|false|false|3.6.0-rc1|true|tuned_stats|2148
-stock|true|true|3.5.6|true|tuned_stats|2154.07692307692
-stock|false|true|3.5.6|true|default|2155.84615384615
-18.1|true|true|3.5.6|true|default|2164.91304347826
-18.1|true|false|3.5.6|true|tuned_stats|2166.91304347826
-18.1|true|true|3.5.4|true|default|2170.77777777778
-18.1|false|true|3.5.6|true|tuned_stats|2184.57142857143
-18.1|false|true|3.5.6|true|default|2197.73913043478
-stock|true|false|3.6.0-rc1|true|tuned_stats|2218.33333333333
-stock|false|false|3.5.6|true|default|2220.33333333333
-18.1|true|true|3.5.6|true|tuned_stats|2268.30434782609
-stock|true|false|3.5.6|true|tuned_stats|2270.66666666667
-stock|true|false|3.6.0-rc1|true|default|2277
-stock|true|false|3.5.4|false|default|4660.66666666667
-stock|true|true|3.5.4|false|default|4833.33333333333
-stock|false|false|3.5.6|false|tuned_stats|4872.125
-stock|true|false|3.6.0-rc1|false|default|4881.33333333333
-18.1|false|false|3.6.0-rc1|false|default|4898.38888888889
-18.1|false|false|3.6.0-rc1|false|tuned_stats|4913.94444444444
-stock|true|false|3.5.4|false|tuned_stats|4959
-18.1|false|false|3.5.6|false|tuned_stats|4977.30434782609
-18.1|true|false|3.5.4|false|default|5043
-18.1|true|false|3.5.6|false|default|5068.39130434783
-18.1|true|false|3.5.4|false|tuned_stats|5088.88888888889
-18.1|true|false|3.6.0-rc1|false|default|5107.55555555556
-18.1|true|false|3.6.0-rc1|false|tuned_stats|5144.16666666667
-stock|false|false|3.5.6|false|default|5202
-18.1|false|false|3.5.6|false|default|5233.08695652174
-18.1|true|false|3.5.6|false|tuned_stats|5306.13043478261
-stock|false|false|3.6.0-rc1|false|default|5313.66666666667
-18.1|true|true|3.5.4|false|tuned_stats|5384.95652173913
-18.1|false|true|3.5.6|false|default|5394.26086956522
-stock|true|false|3.5.6|false|tuned_stats|5486
-stock|false|true|3.5.6|false|default|5513.46153846154
-stock|true|true|3.5.6|false|tuned_stats|5539.61538461538
-stock|true|true|3.5.4|false|tuned_stats|5562.66666666667
-stock|true|false|3.5.6|false|default|5576.33333333333
-stock|false|true|3.5.6|false|tuned_stats|5577.46153846154
-stock|true|true|3.5.6|false|default|5596.625
-stock|true|false|3.6.0-rc1|false|tuned_stats|5626.33333333333
-stock|false|false|3.6.0-rc1|false|tuned_stats|5706.66666666667
-18.1|true|true|3.5.4|false|default|5825.33333333333
-18.1|false|true|3.5.6|false|tuned_stats|5902.39285714286
-18.1|true|true|3.5.6|false|default|5955.52173913043
-18.1|true|true|3.5.6|false|tuned_stats|6012.52173913043
+erlang|rabbit|tuning|throughput
+--------|--------|--------|--------
+stock|3.5.4||1735
+stock|3.5.6|fhc, stats|1887
+stock|3.5.4|hipe, stats|1931
+stock|3.5.4|hipe|1953
+18.1|3.5.4||1976
+stock|3.6.0-rc1|fhc|1980
+18.1|3.6.0-rc1|fhc|2050
+18.1|3.5.6||2052
+18.1|3.6.0-rc1|stats|2056
+18.1|3.5.6|fhc, stats|2081
+18.1|3.6.0-rc1|fhc, stats|2088
+stock|3.5.6||2090
+stock|3.5.6|hipe|2094
+18.1|3.5.6|fhc|2094
+18.1|3.6.0-rc1||2102
+18.1|3.5.4|stats|2107
+stock|3.5.6|fhc, hipe, stats|2117
+stock|3.5.4|stats|2122
+18.1|3.5.4|hipe, stats|2125
+stock|3.6.0-rc1|fhc, stats|2148
+stock|3.5.6|hipe, stats|2154
+stock|3.5.6|fhc, hipe|2155
+18.1|3.5.6|hipe|2164
+18.1|3.5.6|stats|2166
+18.1|3.5.4|hipe|2170
+18.1|3.5.6|fhc, hipe, stats|2184
+18.1|3.5.6|fhc, hipe|2197
+stock|3.6.0-rc1|stats|2218
+stock|3.5.6|fhc|2220
+18.1|3.5.6|hipe, stats|2268
+stock|3.5.6|stats|2270
+stock|3.6.0-rc1||2277
+stock|3.5.4||4660
+stock|3.5.4|hipe|4833
+stock|3.5.6|fhc, stats|4872
+stock|3.6.0-rc1||4881
+18.1|3.6.0-rc1|fhc|4898
+18.1|3.6.0-rc1|fhc, stats|4913
+stock|3.5.4|stats|4959
+18.1|3.5.6|fhc, stats|4977
+18.1|3.5.4||5043
+18.1|3.5.6||5068
+18.1|3.5.4|stats|5088
+18.1|3.6.0-rc1||5107
+18.1|3.6.0-rc1|stats|5144
+stock|3.5.6|fhc|5202
+18.1|3.5.6|fhc|5233
+18.1|3.5.6|stats|5306
+stock|3.6.0-rc1|fhc|5313
+18.1|3.5.4|hipe, stats|5384
+18.1|3.5.6|fhc, hipe|5394
+stock|3.5.6|stats|5486
+stock|3.5.6|fhc, hipe|5513
+stock|3.5.6|hipe, stats|5539
+stock|3.5.4|hipe, stats|5562
+stock|3.5.6||5576
+stock|3.5.6|fhc, hipe, stats|5577
+stock|3.5.6|hipe|5596
+stock|3.6.0-rc1|stats|5626
+stock|3.6.0-rc1|fhc, stats|5706
+18.1|3.5.4|hipe|5825
+18.1|3.5.6|fhc, hipe, stats|5902
+18.1|3.5.6|hipe|5955
+18.1|3.5.6|hipe, stats|6012
