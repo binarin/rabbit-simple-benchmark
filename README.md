@@ -2,7 +2,8 @@ Primitive RabbitMQ benchmark
 ============================
 
 Primitive benchmark to measure relative performance with different
-erlang/rabbit versions and with different options.
+erlang/rabbit versions and with different options. Only CPU-bound
+things are measured.
 
 Scenario is very simple: cluster of 3 nodes, a bunch of producers
 publish to the 1st node, consumers read from the 2nd on. Only normal
