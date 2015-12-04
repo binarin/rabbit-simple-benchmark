@@ -8,6 +8,7 @@ Tunings:
 - 'stats' is about tuning stats collection in management plugin
 Message size 5000
 ----------------------
+
 erlang|rabbit|tuning|throughput
 --------|--------|--------|--------
 stock|3.5.6|fhc|3500
@@ -76,6 +77,7 @@ stock|3.6.0-rc1|stats|8874
 18.1|3.5.6|fhc, hipe, stats|11167
 Message size 25000
 ----------------------
+
 erlang|rabbit|tuning|throughput
 --------|--------|--------|--------
 stock|3.5.4||2591
@@ -121,8 +123,8 @@ stock|3.5.6|fhc, stats|6425
 18.1|3.6.0-rc1|fhc, stats|6543
 18.1|3.6.0-rc1||6547
 stock|3.6.0-rc1|fhc|6563
-stock|3.5.4|stats|6593
 stock|3.5.6|fhc|6593
+stock|3.5.4|stats|6593
 18.1|3.5.6||6660
 stock|3.5.6|fhc, hipe|6693
 18.1|3.6.0-rc1|stats|6708
@@ -144,6 +146,7 @@ stock|3.5.4|hipe, stats|7398
 18.1|3.5.6|hipe|8279
 Message size 50000
 ----------------------
+
 erlang|rabbit|tuning|throughput
 --------|--------|--------|--------
 stock|3.5.4||1735
@@ -158,8 +161,8 @@ stock|3.6.0-rc1|fhc|1980
 18.1|3.5.6|fhc, stats|2081
 18.1|3.6.0-rc1|fhc, stats|2088
 stock|3.5.6||2090
-stock|3.5.6|hipe|2094
 18.1|3.5.6|fhc|2094
+stock|3.5.6|hipe|2094
 18.1|3.6.0-rc1||2102
 18.1|3.5.4|stats|2107
 stock|3.5.6|fhc, hipe, stats|2117

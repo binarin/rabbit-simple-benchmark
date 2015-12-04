@@ -46,7 +46,7 @@ EOF
 
 for my $size (sort { $a <=> $b } keys %sizes) {
     my $data = $sizes{$size};
-    print $out_fh "Message size $size\n----------------------\n";
+    print $out_fh "Message size $size\n----------------------\n\n";
 
     my @headers = ("erlang", "rabbit", "tuning", "throughput");
     print $out_fh join("|", @headers), "\n";
