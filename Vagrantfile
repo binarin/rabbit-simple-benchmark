@@ -6,7 +6,7 @@ IMAGE_NAME="trusty64"
 IP24NET="10.10.10"
 OCF_URL=ENV["OCF_URL"] || "https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/stable/packaging/common/rabbitmq-server-ha.ocf"
 ERLANG_URL=ENV["ERLANG_URL"] || "http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_18.1-1~ubuntu~trusty_amd64.deb"
-RABBIT_URL=ENV["RABBITMQ_URL"] || "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_5_6/rabbitmq-server_3.5.6-1_all.deb"
+RABBIT_URL=ENV["RABBIT_URL"] || "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_5_6/rabbitmq-server_3.5.6-1_all.deb"
 APT_PROXY_URL=ENV["APT_PROXY_URL"]
 
 def shell_script(filename, args=[])
