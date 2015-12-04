@@ -38,6 +38,7 @@ print $out_fh <<EOF;
 'stock' erlang is the version from ubuntu trusty.
 
 Tunings:
+- 'HA' is about enabling 'ha-policy: all'
 - 'fhc' is about disabling fhc read cache
 - 'hipe' is about enabling HiPE compilation
 - 'stats' is about tuning stats collection in management plugin
@@ -46,7 +47,7 @@ EOF
 
 for my $size (sort { $a <=> $b } keys %sizes) {
     my $data = $sizes{$size};
-    print $out_fh "Message size $size\n----------------------\n\n";
+    print $out_fh "\n\nMessage size $size\n----------------------\n\n";
 
     my @headers = ("erlang", "rabbit", "tuning", "throughput");
     print $out_fh join("|", @headers), "\n";
@@ -55,6 +56,7 @@ for my $size (sort { $a <=> $b } keys %sizes) {
     my @data = sort { $a->{avg} <=> $b->{avg} } @$data;
     for my $row (@data) {
         my @tuning;
+        push @tuning, 'HA' if $row->{RABBIT_HA} eq 'true';
         push @tuning, 'fhc' if $row->{FHC_READ_BUFFERING} eq 'false';
         push @tuning, 'hipe' if $row->{HIPE_COMPILE} eq 'true';
         push @tuning, 'stats' if $row->{STATS} ne 'default';

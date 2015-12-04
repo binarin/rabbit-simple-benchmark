@@ -3,46 +3,49 @@ Benchmark results
 'stock' erlang is the version from ubuntu trusty.
 
 Tunings:
+- 'HA' is about enabling 'ha-policy: all'
 - 'fhc' is about disabling fhc read cache
 - 'hipe' is about enabling HiPE compilation
 - 'stats' is about tuning stats collection in management plugin
+
+
 Message size 5000
 ----------------------
 
 erlang|rabbit|tuning|throughput
 --------|--------|--------|--------
-stock|3.5.6|fhc|3500
-18.1|3.5.4||3545
-18.1|3.5.6|fhc|3653
-stock|3.5.6|hipe|3685
-stock|3.5.6||3702
-stock|3.6.0-rc1|fhc, stats|3713
-18.1|3.6.0-rc1||3715
-stock|3.5.4||3728
-18.1|3.5.6||3732
-stock|3.5.6|fhc, hipe|3740
-18.1|3.6.0-rc1|fhc|3774
-18.1|3.5.4|stats|3789
-stock|3.5.6|fhc, stats|3802
-stock|3.6.0-rc1||3843
-stock|3.5.6|stats|3848
-18.1|3.6.0-rc1|fhc, stats|3857
-18.1|3.6.0-rc1|stats|3868
-stock|3.5.6|hipe, stats|3928
-18.1|3.5.6|stats|3935
-18.1|3.5.6|fhc, stats|3981
-stock|3.5.6|fhc, hipe, stats|4038
-stock|3.6.0-rc1|fhc|4056
-stock|3.5.4|hipe|4097
-stock|3.5.4|stats|4140
-stock|3.6.0-rc1|stats|4301
-18.1|3.5.4|hipe, stats|4314
-stock|3.5.4|hipe, stats|4317
-18.1|3.5.4|hipe|4451
-18.1|3.5.6|hipe|4464
-18.1|3.5.6|fhc, hipe|4467
-18.1|3.5.6|fhc, hipe, stats|4524
-18.1|3.5.6|hipe, stats|4719
+stock|3.5.6|HA, fhc|3500
+18.1|3.5.4|HA|3545
+18.1|3.5.6|HA, fhc|3653
+stock|3.5.6|HA, hipe|3685
+stock|3.5.6|HA|3702
+stock|3.6.0-rc1|HA, fhc, stats|3713
+18.1|3.6.0-rc1|HA|3715
+stock|3.5.4|HA|3728
+18.1|3.5.6|HA|3732
+stock|3.5.6|HA, fhc, hipe|3740
+18.1|3.6.0-rc1|HA, fhc|3774
+18.1|3.5.4|HA, stats|3789
+stock|3.5.6|HA, fhc, stats|3802
+stock|3.6.0-rc1|HA|3843
+stock|3.5.6|HA, stats|3848
+18.1|3.6.0-rc1|HA, fhc, stats|3857
+18.1|3.6.0-rc1|HA, stats|3868
+stock|3.5.6|HA, hipe, stats|3928
+18.1|3.5.6|HA, stats|3935
+18.1|3.5.6|HA, fhc, stats|3981
+stock|3.5.6|HA, fhc, hipe, stats|4038
+stock|3.6.0-rc1|HA, fhc|4056
+stock|3.5.4|HA, hipe|4097
+stock|3.5.4|HA, stats|4140
+stock|3.6.0-rc1|HA, stats|4301
+18.1|3.5.4|HA, hipe, stats|4314
+stock|3.5.4|HA, hipe, stats|4317
+18.1|3.5.4|HA, hipe|4451
+18.1|3.5.6|HA, hipe|4464
+18.1|3.5.6|HA, fhc, hipe|4467
+18.1|3.5.6|HA, fhc, hipe, stats|4524
+18.1|3.5.6|HA, hipe, stats|4719
 18.1|3.5.4||7813
 stock|3.6.0-rc1||7950
 stock|3.5.6||8008
@@ -75,43 +78,45 @@ stock|3.6.0-rc1|stats|8874
 18.1|3.5.6|hipe, stats|10724
 18.1|3.5.6|hipe|10942
 18.1|3.5.6|fhc, hipe, stats|11167
+
+
 Message size 25000
 ----------------------
 
 erlang|rabbit|tuning|throughput
 --------|--------|--------|--------
-stock|3.5.4||2591
-stock|3.5.6|fhc, stats|2634
-stock|3.5.4|hipe|2694
-stock|3.5.6|hipe, stats|2735
-18.1|3.5.4||2759
-18.1|3.5.4|stats|2771
-stock|3.6.0-rc1|fhc|2826
-18.1|3.6.0-rc1|fhc|2831
-18.1|3.5.6|fhc, stats|2831
-18.1|3.6.0-rc1||2836
-18.1|3.6.0-rc1|stats|2839
-stock|3.5.4|stats|2864
-stock|3.5.4|hipe, stats|2866
-18.1|3.5.6||2871
-18.1|3.5.6|fhc|2878
-18.1|3.6.0-rc1|fhc, stats|2879
-stock|3.5.6|hipe|2885
-stock|3.5.6|fhc|2955
-stock|3.5.6|fhc, hipe|2956
-stock|3.5.6|fhc, hipe, stats|2957
-18.1|3.5.6|stats|2976
-stock|3.6.0-rc1||2976
-stock|3.5.6||2990
-stock|3.6.0-rc1|fhc, stats|3006
-stock|3.5.6|stats|3029
-18.1|3.5.6|fhc, hipe|3033
-stock|3.6.0-rc1|stats|3051
-18.1|3.5.4|hipe, stats|3061
-18.1|3.5.6|hipe|3156
-18.1|3.5.4|hipe|3166
-18.1|3.5.6|fhc, hipe, stats|3203
-18.1|3.5.6|hipe, stats|3248
+stock|3.5.4|HA|2591
+stock|3.5.6|HA, fhc, stats|2634
+stock|3.5.4|HA, hipe|2694
+stock|3.5.6|HA, hipe, stats|2735
+18.1|3.5.4|HA|2759
+18.1|3.5.4|HA, stats|2771
+stock|3.6.0-rc1|HA, fhc|2826
+18.1|3.5.6|HA, fhc, stats|2831
+18.1|3.6.0-rc1|HA, fhc|2831
+18.1|3.6.0-rc1|HA|2836
+18.1|3.6.0-rc1|HA, stats|2839
+stock|3.5.4|HA, stats|2864
+stock|3.5.4|HA, hipe, stats|2866
+18.1|3.5.6|HA|2871
+18.1|3.5.6|HA, fhc|2878
+18.1|3.6.0-rc1|HA, fhc, stats|2879
+stock|3.5.6|HA, hipe|2885
+stock|3.5.6|HA, fhc|2955
+stock|3.5.6|HA, fhc, hipe|2956
+stock|3.5.6|HA, fhc, hipe, stats|2957
+stock|3.6.0-rc1|HA|2976
+18.1|3.5.6|HA, stats|2976
+stock|3.5.6|HA|2990
+stock|3.6.0-rc1|HA, fhc, stats|3006
+stock|3.5.6|HA, stats|3029
+18.1|3.5.6|HA, fhc, hipe|3033
+stock|3.6.0-rc1|HA, stats|3051
+18.1|3.5.4|HA, hipe, stats|3061
+18.1|3.5.6|HA, hipe|3156
+18.1|3.5.4|HA, hipe|3166
+18.1|3.5.6|HA, fhc, hipe, stats|3203
+18.1|3.5.6|HA, hipe, stats|3248
 18.1|3.6.0-rc1|fhc|6197
 stock|3.5.4||6265
 stock|3.6.0-rc1||6335
@@ -123,16 +128,16 @@ stock|3.5.6|fhc, stats|6425
 18.1|3.6.0-rc1|fhc, stats|6543
 18.1|3.6.0-rc1||6547
 stock|3.6.0-rc1|fhc|6563
-stock|3.5.6|fhc|6593
 stock|3.5.4|stats|6593
+stock|3.5.6|fhc|6593
 18.1|3.5.6||6660
 stock|3.5.6|fhc, hipe|6693
 18.1|3.6.0-rc1|stats|6708
 18.1|3.5.6|fhc|6821
 stock|3.5.6|stats|6836
 stock|3.5.6||6872
-stock|3.5.6|hipe|6920
 stock|3.6.0-rc1|fhc, stats|6920
+stock|3.5.6|hipe|6920
 stock|3.5.6|fhc, hipe, stats|7012
 18.1|3.5.6|stats|7036
 stock|3.5.6|hipe, stats|7055
@@ -144,43 +149,45 @@ stock|3.5.4|hipe, stats|7398
 18.1|3.5.6|hipe, stats|8085
 18.1|3.5.6|fhc, hipe, stats|8245
 18.1|3.5.6|hipe|8279
+
+
 Message size 50000
 ----------------------
 
 erlang|rabbit|tuning|throughput
 --------|--------|--------|--------
-stock|3.5.4||1735
-stock|3.5.6|fhc, stats|1887
-stock|3.5.4|hipe, stats|1931
-stock|3.5.4|hipe|1953
-18.1|3.5.4||1976
-stock|3.6.0-rc1|fhc|1980
-18.1|3.6.0-rc1|fhc|2050
-18.1|3.5.6||2052
-18.1|3.6.0-rc1|stats|2056
-18.1|3.5.6|fhc, stats|2081
-18.1|3.6.0-rc1|fhc, stats|2088
-stock|3.5.6||2090
-18.1|3.5.6|fhc|2094
-stock|3.5.6|hipe|2094
-18.1|3.6.0-rc1||2102
-18.1|3.5.4|stats|2107
-stock|3.5.6|fhc, hipe, stats|2117
-stock|3.5.4|stats|2122
-18.1|3.5.4|hipe, stats|2125
-stock|3.6.0-rc1|fhc, stats|2148
-stock|3.5.6|hipe, stats|2154
-stock|3.5.6|fhc, hipe|2155
-18.1|3.5.6|hipe|2164
-18.1|3.5.6|stats|2166
-18.1|3.5.4|hipe|2170
-18.1|3.5.6|fhc, hipe, stats|2184
-18.1|3.5.6|fhc, hipe|2197
-stock|3.6.0-rc1|stats|2218
-stock|3.5.6|fhc|2220
-18.1|3.5.6|hipe, stats|2268
-stock|3.5.6|stats|2270
-stock|3.6.0-rc1||2277
+stock|3.5.4|HA|1735
+stock|3.5.6|HA, fhc, stats|1887
+stock|3.5.4|HA, hipe, stats|1931
+stock|3.5.4|HA, hipe|1953
+18.1|3.5.4|HA|1976
+stock|3.6.0-rc1|HA, fhc|1980
+18.1|3.6.0-rc1|HA, fhc|2050
+18.1|3.5.6|HA|2052
+18.1|3.6.0-rc1|HA, stats|2056
+18.1|3.5.6|HA, fhc, stats|2081
+18.1|3.6.0-rc1|HA, fhc, stats|2088
+stock|3.5.6|HA|2090
+stock|3.5.6|HA, hipe|2094
+18.1|3.5.6|HA, fhc|2094
+18.1|3.6.0-rc1|HA|2102
+18.1|3.5.4|HA, stats|2107
+stock|3.5.6|HA, fhc, hipe, stats|2117
+stock|3.5.4|HA, stats|2122
+18.1|3.5.4|HA, hipe, stats|2125
+stock|3.6.0-rc1|HA, fhc, stats|2148
+stock|3.5.6|HA, hipe, stats|2154
+stock|3.5.6|HA, fhc, hipe|2155
+18.1|3.5.6|HA, hipe|2164
+18.1|3.5.6|HA, stats|2166
+18.1|3.5.4|HA, hipe|2170
+18.1|3.5.6|HA, fhc, hipe, stats|2184
+18.1|3.5.6|HA, fhc, hipe|2197
+stock|3.6.0-rc1|HA, stats|2218
+stock|3.5.6|HA, fhc|2220
+18.1|3.5.6|HA, hipe, stats|2268
+stock|3.5.6|HA, stats|2270
+stock|3.6.0-rc1|HA|2277
 stock|3.5.4||4660
 stock|3.5.4|hipe|4833
 stock|3.5.6|fhc, stats|4872
