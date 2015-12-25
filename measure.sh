@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-ALL_RABBITS=${ALL_RABBITS:-3.5.6 3.5.4 3.6.0-rc1}
+ALL_RABBITS=${ALL_RABBITS:-3.5.6 3.5.4 3.5.7 3.6.0}
 ALL_MESSAGE_SIZES=${ALL_MESSAGE_SIZES:-5000 25000 50000}
 ALL_ERLANGS=${ALL_ERLANGS:-18.1 stock}
 
@@ -194,10 +194,19 @@ rabbit_url() {
             [ -s "$deb" ] || fail "Failed to get $deb"
             RABBIT_URL="/vagrant/$deb"
             ;;
-        3.6.0-rc1)
+        3.5.7)
             CAN_DISABLE_FHC_READ_BUFFERING=true
-            deb=rabbitmq-server_3.5.903-1_all.deb
-            [ -f "$deb" ] || wget -q -O $deb "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_0_rc1/$deb"
+            CAN_HIPE_COMPILE=true
+            deb=rabbitmq-server_3.5.7-1_all.deb
+            [ -f "$deb" ] || wget -q -O $deb "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_5_7/$deb"
+            [ -s "$deb" ] || fail "Failed to get $deb"
+            RABBIT_URL="/vagrant/$deb"
+            ;;
+        3.6.0)
+            CAN_DISABLE_FHC_READ_BUFFERING=true
+            CAN_HIPE_COMPILE=true
+            deb=rabbitmq-server_3.6.0-1_all.deb
+            [ -f "$deb" ] || wget -q -O $deb "https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_6_0/$deb"
             [ -s "$deb" ] || fail "Failed to get $deb"
             RABBIT_URL="/vagrant/$deb"
             ;;
